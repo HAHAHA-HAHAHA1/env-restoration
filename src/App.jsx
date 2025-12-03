@@ -1,11 +1,10 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Air from "./pages/Air";
-import Water from "./pages/Water";
-import Soil from "./pages/Soil";
-import Forest from "./pages/Forest";
-import Marine from "./pages/Marine";
+import Air from "./pages/AirPollution";
+import Water from "./pages/WaterPollution";
+import Soil from "./pages/SoilPollution";
+import Forest from "./pages/ForestRestoration";
+import Marine from "./pages/MarineEcosystem";
 
 function App() {
   return (

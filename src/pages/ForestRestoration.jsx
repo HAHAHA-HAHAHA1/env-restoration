@@ -1,25 +1,27 @@
-// src/pages/Forest.jsx
-import ReportSection from "../components/ReportSection";
-
 export default function Forest() {
+  const reports = [
+    { title: "복원 시간", value: "수십 년 ~ 수백 년", color: "border-green-700" },
+    { title: "주요 전략", value: "나무 심기, 자연 재생, 산림 관리", color: "border-green-500" },
+    { title: "대표 사례", value: "브라질 아마존 벌채 지역 복원", color: "border-green-600" },
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-b from-green-100 to-white min-h-screen">
-      <h1 className="text-4xl font-bold mb-8">산림 복원</h1>
+    <div className="min-h-screen bg-green-100 p-8">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-bold mb-2">산림 복원</h1>
+        <p className="text-gray-700">
+          산림 복원 과정과 소요 시간을 시각적으로 확인할 수 있습니다.
+        </p>
+      </header>
 
-      <ReportSection
-        title="벌채 지역 나무 심기"
-        content="브라질 아마존 등 벌채 지역에서 나무 심기, 자연 재생, 산림 관리 등 장기적 복원 노력 필요."
-      />
-
-      <ReportSection
-        title="생태계 관리"
-        content="토양 보전, 동식물 복원, 산림 보호 정책을 병행해야 효과적."
-      />
-
-      <ReportSection
-        title="복원 소요 시간"
-        content="수십 년에서 수백 년까지 소요되며, 장기적 모니터링과 관리 필수."
-      />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {reports.map((r) => (
+          <div key={r.title} className={`p-6 rounded-xl shadow-lg bg-white border-l-4 ${r.color} flex flex-col justify-between`}>
+            <h3 className="text-2xl font-semibold mb-2">{r.title}</h3>
+            <p className="text-gray-800">{r.value}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

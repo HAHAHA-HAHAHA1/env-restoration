@@ -1,25 +1,27 @@
-// src/pages/Water.jsx
-import ReportSection from "../components/ReportSection";
-
 export default function Water() {
+  const reports = [
+    { title: "복원 시간", value: "수십 년 ~ 수백 년", color: "border-blue-500" },
+    { title: "주요 전략", value: "오염 물질 제거, 습지 복원, 생태계 회복", color: "border-blue-400" },
+    { title: "대표 사례", value: "미국 체사피크 만 복원 사례", color: "border-blue-600" },
+  ];
+
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-b from-blue-50 to-white min-h-screen">
-      <h1 className="text-4xl font-bold mb-8">수질 오염 복원</h1>
+    <div className="min-h-screen bg-blue-50 p-8">
+      <header className="mb-8 text-center">
+        <h1 className="text-4xl font-bold mb-2">수질 오염 복원</h1>
+        <p className="text-gray-700">
+          수질 오염 복원 과정과 소요 시간을 시각적으로 확인할 수 있습니다.
+        </p>
+      </header>
 
-      <ReportSection
-        title="오염 물질 제거"
-        content="강, 호수, 해양 오염 물질 제거를 통해 수질 개선. 미국 체사피크 만 사례: 화학물 제거와 습지 복원."
-      />
-
-      <ReportSection
-        title="생태계 회복"
-        content="물고기, 식물, 미생물 생태계 회복 과정이 포함되며, 복합적인 관리 필요."
-      />
-
-      <ReportSection
-        title="복원 소요 시간"
-        content="수십 년에서 수백 년까지 소요될 수 있으며, 지속적 모니터링과 정책 지원 필요."
-      />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {reports.map((r) => (
+          <div key={r.title} className={`p-6 rounded-xl shadow-lg bg-white border-l-4 ${r.color} flex flex-col justify-between`}>
+            <h3 className="text-2xl font-semibold mb-2">{r.title}</h3>
+            <p className="text-gray-800">{r.value}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,29 +1,33 @@
-// src/pages/Home.jsx
-import CategoryCard from "../components/CategoryCard";
+import { Link } from "react-router-dom";
+
+const categories = [
+  { title: "대기 오염", color: "from-green-200 to-green-100", path: "/air" },
+  { title: "수질 오염", color: "from-blue-200 to-blue-100", path: "/water" },
+  { title: "토양 오염", color: "from-yellow-200 to-yellow-100", path: "/soil" },
+  { title: "산림 복원", color: "from-green-400 to-green-200", path: "/forest" },
+  { title: "해양 생태계", color: "from-cyan-200 to-cyan-100", path: "/marine" },
+];
 
 export default function Home() {
-  const categories = [
-    { name: "대기 오염", description: "산업·교통·정책 대응 사례", link: "/air", color: "bg-green-200" },
-    { name: "수질 오염", description: "강, 호수, 해양 복원 사례", link: "/water", color: "bg-blue-200" },
-    { name: "토양 오염", description: "중금속 오염 지역, 토양 정화", link: "/soil", color: "bg-yellow-200" },
-    { name: "산림 복원", description: "벌채 지역 나무 심기, 관리", link: "/forest", color: "bg-green-400" },
-    { name: "해양 생태계", description: "산호초, 온도 상승, 보호 구역", link: "/marine", color: "bg-cyan-200" },
-  ];
-
   return (
-    <div className="min-h-screen bg-gradient-to-r from-green-50 to-blue-50 p-10">
-      <h1 className="text-5xl font-extrabold text-center mb-12 text-gray-800">
-        환경 복원 조사 보고서
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="min-h-screen bg-gray-50 p-8">
+      <header className="text-center mb-12">
+        <h1 className="text-5xl font-bold mb-4">환경 복원 조사 보고서</h1>
+        <p className="text-xl text-gray-700">
+          각 환경 영역별 복원 소요 시간과 전략을 한눈에 확인하세요.
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((cat) => (
-          <CategoryCard
-            key={cat.name}
-            name={cat.name}
-            description={cat.description}
-            link={cat.link}
-            color={cat.color}
-          />
+          <Link key={cat.title} to={cat.path}>
+            <div className={`p-6 rounded-xl shadow-xl bg-gradient-to-br ${cat.color} hover:scale-105 transform transition-all`}>
+              <h2 className="text-3xl font-bold mb-2">{cat.title}</h2>
+              <p className="text-gray-800">
+                클릭하여 상세 정보와 복원 소요 시간을 확인하세요.
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
